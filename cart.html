@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>UniBooks — Cart</title>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<header class="header">
+  <div class="brand"><div class="logo">UB</div><nav><a href="index.html">Home</a><a href="products.html">Books</a><a href="about.html">About</a></nav></div>
+  <div class="spacer"></div>
+  <div class="searchbar" style="min-width:200px"><div style="flex:1"></div></div>
+</header>
+
+<main class="container">
+  <div class="cart-box">
+    <h2>Your Basket</h2>
+    <div id="cartItems"></div>
+    <hr style="margin:16px 0"/>
+    <h3 id="totalPrice">Total: Ksh 0</h3>
+    <div style="display:flex;gap:12px;justify-content:center;margin-top:14px">
+      <button class="btn" onclick="clearCart()">Clear Cart</button>
+      <a class="btn" href="checkout.html">Checkout</a>
+    </div>
+  </div>
+</main>
+
+<script>
+function renderCart(){
+  const container = document.getElementById('cartItems');
+  const cart = JSON.parse(localStorage.getItem('cart')||'[]');
+  container.innerHTML='';
+  if(cart.length===0){ container.innerHTML='<p>Your basket is empty.</p>'; document.getElementById('totalPrice').textContent='Total: Ksh 0'; return;}
+  let total=0;
+  cart.forEach((it,i)=>{
+    total += it.price;
+    const el = document.createElement('div'); el.className='cart-item';
+    el.innerHTML = `<img src="${it.img}" alt="${escapeHtml(it.title)}"><p style="flex:1;margin-left:12px;text-align:left">${escapeHtml(it.title)}</p><span style="margin-right:12px">Ksh ${it.price.toLocaleString()}</span><button class="remove-btn" onclick="removeItem(${i})">Remove</button>`;
+    container.appendChild(el);
+  });
+  document.getElementById('totalPrice').textContent = 'Total: Ksh ' + total.toLocaleString();
+  refreshCartTop();
+}
+function removeItem(index){
+  const cart = JSON.parse(localStorage.getItem('cart')||'[]');
+  cart.splice(index,1);
+  localStorage.setItem('cart',JSON.stringify(cart));
+  renderCart();
+}
+function clearCart(){ localStorage.removeItem('cart'); renderCart(); refreshCartTop(); }
+function escapeHtml(s){ return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function refreshCartTop(){ const c=document.querySelectorAll('.remove-btn').length; localStorage.setItem('cartCount', c); }
+renderCart();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+

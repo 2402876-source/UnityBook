@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>UniBooks — Checkout</title>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<header class="header">
+  <div class="brand"><div class="logo">UB</div><nav><a href="index.html">Home</a><a href="products.html">Books</a><a href="about.html">About</a></nav></div>
+  <div class="spacer"></div>
+</header>
+
+<main class="container">
+  <div class="cart-box">
+    <h2>Checkout</h2>
+    <p>Complete your order (demo). Payment processing is not included in this frontend demo.</p>
+    <form id="checkoutForm" style="display:flex;flex-direction:column;gap:10px;max-width:420px;margin:auto">
+      <input required placeholder="Full name" />
+      <input required type="email" placeholder="Email" />
+      <input required placeholder="Phone" />
+      <input required placeholder="Delivery address" />
+      <select required><option value="">Payment method</option><option>M-Pesa</option><option>Card</option></select>
+      <button class="btn" type="submit">Place order</button>
+    </form>
+  </div>
+</main>
+
+<script>
+document.getElementById('checkoutForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  // demo flow: clear cart and shoppingEnabled so user must restart
+  localStorage.removeItem('cart');
+  localStorage.removeItem('shoppingEnabled');
+  alert('Order placed — thank you!');
+  window.location.href='index.html';
+});
+</script>
+</body>
+</html>

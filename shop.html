@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>UniBooks — Shop</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    body {
+      background: linear-gradient(135deg, #e3f2fd, #ffffff);
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    /* Popup overlay styling */
+    .popup-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .popup {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      max-width: 420px;
+      width: 90%;
+      padding: 24px;
+      text-align: center;
+      animation: fadeIn 0.4s ease;
+    }
+    .popup img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 18px;
+    }
+    .popup h3 {
+      color: #0b1220;
+      margin-bottom: 6px;
+    }
+    .popup p {
+      color: #444;
+      margin-bottom: 12px;
+    }
+    .popup .price {
+      font-weight: bold;
+      color: #0b74de;
+      margin-bottom: 16px;
+    }
+    .popup button {
+      border: none;
+      border-radius: 8px;
+      padding: 10px 16px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+      margin: 5px;
+    }
+    .popup .close-btn {
+      background: #ccc;
+    }
+    .popup .close-btn:hover {
+      background: #b5b5b5;
+    }
+    .popup .add-btn {
+      background: linear-gradient(90deg,#0b74de,#4aa6ff);
+      color: white;
+    }
+    .popup .add-btn:hover {
+      box-shadow: 0 5px 14px rgba(11,116,222,0.35);
+      transform: translateY(-2px);
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: scale(0.9);}
+      to {opacity: 1; transform: scale(1);}
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="brand">
+      <div class="logo">UB</div>
+      <nav><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="about.html">About</a></nav>
+    </div>
+    <div class="spacer"></div>
+    <div class="searchbar" style="min-width:260px;">
+      <input id="searchInput" placeholder="Search books..." oninput="applyFilter()" />
+      <div style="flex:1"></div>
+      <div class="search-actions">
+        <button class="icon-btn" onclick="location.href='cart.html'">My basket 
+          <span id="cartCountTop" class="cart-count" style="display:none">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="categories" id="categoryBar">
+      <div class="cat active" data-cat="all" onclick="setCategory('all',this)">All</div>
+      <div class="cat" data-cat="programming" onclick="setCategory('programming',this)">Programming</div>
+      <div class="cat" data-cat="ai" onclick="setCategory('ai',this)">AI / ML</div>
+      <div class="cat" data-cat="web" onclick="setCategory('web',this)">Web Dev</div>
+      <div class="cat" data-cat="security" onclick="setCategory('security',this)">Security</div>
+      <div class="cat" data-cat="data" onclick="setCategory('data',this)">Data</div>
+      <div class="cat" data-cat="management" onclick="setCategory('management',this)">Management</div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <h3 style="margin:6px 0;color:#0b1220">Shop Books</h3>
+      <div style="color:var(--muted);font-size:14px">Click “View” to see details or add to cart</div>
+    </div>
+
+    <div class="grid" id="booksGrid">
+      <!-- Books generated via JS -->
+    </div>
+  </div>
+
+  <div class="footer-small">© 2025 UniBooks</div>
+
+  <!-- Popup -->
+  <div id="popupOverlay" class="popup-overlay">
+    <div class="popup" id="popupBox">
+      <img id="popupImg" src="" alt="Book cover">
+      <h3 id="popupTitle"></h3>
+      <p id="popupAuthor"></p>
+      <div class="price" id="popupPrice"></div>
+      <button class="add-btn" id="addToCartBtn">Add to Cart</button>
+      <button class="close-btn" onclick="closePopup()">Close</button>
+    </div>
+  </div>
+
+<script>
+const books = [
+  {id:1,title:'Computer Networks',author:'Cormen et al.',price:1800,cat:'networking',img:'https://images.unsplash.com/photo-1512820790803-83ca734da794'},
+  {id:2,title:'Database Systems',author:'Silberschatz',price:2000,cat:'data',img:'https://images.unsplash.com/photo-1519681393784-d120267933ba'},
+  {id:3,title:'Programming in Python',author:'Zed Shaw',price:1500,cat:'programming',img:'https://images.unsplash.com/photo-1516979187457-637abb4f9353'},
+  {id:4,title:'Web Development',author:'Robinson',price:1600,cat:'web',img:'https://images.unsplash.com/photo-1522202176988-66273c2fd55f'},
+  {id:5,title:'Machine Learning Essentials',author:'A. Smith',price:2500,cat:'ai',img:'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b'},
+  {id:6,title:'Cybersecurity Fundamentals',author:'K. Lynn',price:1900,cat:'security',img:'https://images.unsplash.com/photo-1581090700227-1e37b190418e'},
+  {id:7,title:'Mobile App Development',author:'N. Jones',price:2100,cat:'programming',img:'https://images.unsplash.com/photo-1498050108023-c5249f4df085'},
+  {id:8,title:'Data Structures & Algorithms',author:'R. Patel',price:2100,cat:'data',img:'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f'},
+  {id:9,title:'AI Basics',author:'L. Wong',price:2300,cat:'ai',img:'https://images.unsplash.com/photo-1507842217343-583bb7270b66'},
+  {id:10,title:'IT Project Management',author:'D. Clark',price:2200,cat:'management',img:'https://images.unsplash.com/photo-1516979187457-637abb4f9353'}
+];
+
+let activeCategory = 'all';
+let activeQuery = '';
+let currentBook = null;
+
+function renderBooks(){
+  const grid = document.getElementById('booksGrid');
+  grid.innerHTML='';
+  const q = activeQuery.toLowerCase();
+
+  books.forEach(b=>{
+    if(activeCategory !== 'all' && b.cat !== activeCategory) return;
+    if(q && !(b.title.toLowerCase().includes(q) || b.author.toLowerCase().includes(q))) return;
+
+    const div = document.createElement('div');
+    div.className='book';
+    div.innerHTML = `
+      <img src="${b.img}" alt="${escapeHtml(b.title)}">
+      <h4>${escapeHtml(b.title)}</h4>
+      <div class="author">${escapeHtml(b.author)}</div>
+      <div class="price">Ksh ${b.price.toLocaleString()}</div>
+      <div class="actions">
+        <button class="btn-small view-btn" onclick="viewBook(${b.id})">View</button>
+        <button class="btn-small add-btn" onclick="addToCart(${b.id})">Add</button>
+      </div>
+    `;
+    grid.appendChild(div);
+  });
+
+  refreshCartCount();
+}
+
+function escapeHtml(str){ 
+  return str.replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])) 
+}
+
+function setCategory(cat, el){
+  activeCategory = cat;
+  document.querySelectorAll('.cat').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  renderBooks();
+}
+
+function applyFilter(){
+  activeQuery = document.getElementById('searchInput').value || '';
+  renderBooks();
+}
+
+function viewBook(id){
+  const b = books.find(x=>x.id===id);
+  currentBook = b;
+  document.getElementById('popupImg').src = b.img;
+  document.getElementById('popupTitle').textContent = b.title;
+  document.getElementById('popupAuthor').textContent = "Author: " + b.author;
+  document.getElementById('popupPrice').textContent = "Ksh " + b.price.toLocaleString();
+  document.getElementById('popupOverlay').style.display = 'flex';
+}
+
+function closePopup(){
+  document.getElementById('popupOverlay').style.display = 'none';
+  currentBook = null;
+}
+
+document.getElementById('addToCartBtn').addEventListener('click', function(){
+  if(!currentBook) return;
+  addToCart(currentBook.id);
+  closePopup();
+});
+
+function addToCart(id){
+  const b = books.find(x=>x.id===id);
+  const cart = JSON.parse(localStorage.getItem('cart')||'[]');
+  cart.push({title:b.title,price:b.price,img:b.img});
+  localStorage.setItem('cart',JSON.stringify(cart));
+  alert(b.title+' added to cart!');
+  refreshCartCount();
+}
+
+function refreshCartCount(){
+  const c = JSON.parse(localStorage.getItem('cart')||'[]').length;
+  const el = document.getElementById('cartCountTop');
+  if(el){ if(c>0){ el.style.display='inline-block'; el.textContent=c } else el.style.display='none'; }
+}
+
+/* initial */
+renderBooks();
+refreshCartCount();
+</script>
+</body>
+</html>
