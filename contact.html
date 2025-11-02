@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — Unity Books</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      margin: 0;
+      background: linear-gradient(180deg, #f8fafc, #eaf3ff);
+      color: #0b1220;
+    }
+
+    .contact-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      max-width: 1100px;
+      margin: 80px auto;
+      background: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 10px 35px rgba(11, 116, 222, 0.15);
+      padding: 50px;
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(25px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      text-align: center;
+      width: 100%;
+      font-size: 34px;
+      color: #0b74de;
+      margin-bottom: 10px;
+    }
+
+    p.subtext {
+      text-align: center;
+      color: #555;
+      font-size: 16px;
+      width: 100%;
+      margin-bottom: 40px;
+    }
+
+    form {
+      flex: 1 1 450px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid #c7d7f5;
+      border-radius: 10px;
+      font-size: 15px;
+      transition: all 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #0b74de;
+      box-shadow: 0 0 8px rgba(11, 116, 222, 0.25);
+      outline: none;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    button {
+      background: linear-gradient(90deg, #0b74de, #ffcc00);
+      border: none;
+      color: #0b1220;
+      padding: 14px 20px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(11, 116, 222, 0.35);
+    }
+
+    .contact-info {
+      flex: 1 1 350px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 20px 10px;
+      line-height: 1.8;
+    }
+
+    .contact-info h3 {
+      color: #0b74de;
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    .contact-info p {
+      color: #333;
+      font-size: 15px;
+      margin: 6px 0;
+    }
+
+    .highlight {
+      color: #0b74de;
+      font-weight: 600;
+    }
+
+    .map-container {
+      max-width: 1100px;
+      margin: 0 auto 80px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(11, 116, 222, 0.15);
+      animation: fadeIn 1s ease;
+    }
+
+    iframe {
+      width: 100%;
+      height: 350px;
+      border: 0;
+    }
+
+    @media (max-width: 800px) {
+      .contact-wrapper { flex-direction: column; padding: 30px 25px; }
+      form, .contact-info { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ Fixed Header (matches index.html exactly) -->
+  <header class="header">
+  <div class="brand">
+    <div class="logo">UB</div>
+    <div class="sitename">Unity Books</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="security.html">Security</a>
+      <a href="payment.html">Payment</a>
+      <a href="legal.html">Legal</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+  </div>
+  <div class="spacer"></div>
+  <div class="searchbar" role="search" aria-hidden="true">
+    <input placeholder="Search books, authors..." />
+    <div style="flex:1"></div>
+    <div class="search-actions">
+      <button class="icon-btn" onclick="location.href='cart.html'">
+        My basket <span id="cartCount" class="cart-count" style="display:none">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- CONTACT SECTION -->
+  <section class="contact-wrapper">
+    <h2>Contact Unity Books</h2>
+    <p class="subtext">We’re always happy to hear from you! Fill out the form or reach us using the details below.</p>
+
+    <!-- Contact Form -->
+    <form id="contactForm">
+      <input type="text" id="name" placeholder="Your Full Name" required />
+      <input type="email" id="email" placeholder="Your Email Address" required />
+      <input type="text" id="subject" placeholder="Subject" required />
+      <textarea id="message" placeholder="Your Message..." required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+
+    <!-- Contact Info -->
+    <div class="contact-info">
+      <h3>📍 Unity Books Nairobi</h3>
+      <p><span class="highlight">Address:</span> Kimathi Street, Nairobi, Kenya</p>
+      <p><span class="highlight">Email:</span> support@unitybooks.com</p>
+      <p><span class="highlight">Phone:</span> +254 712 345 678</p>
+      <p><span class="highlight">Working Hours:</span> Mon – Sat: 8:00 AM – 6:00 PM</p>
+      <p><span class="highlight">Socials:</span> Facebook · Instagram · Twitter</p>
+    </div>
+  </section>
+
+  <!-- GOOGLE MAP -->
+  <div class="map-container">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.857227727537!2d36.81891167496524!3d-1.2832537356236826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d42b4b1c1b%3A0x7b0e89710b427b9!2sKimathi%20Street%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1730558740190!5m2!1sen!2ske"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+
+  <div class="footer-small">© 2025 Unity Books — Empowering Students Through Knowledge</div>
+
+  <script>
+    function refreshCartCount(){
+      const c = JSON.parse(localStorage.getItem('cart')||'[]').length;
+      const el = document.getElementById('cartCount');
+      if(c>0){ el.style.display='inline-block'; el.textContent=c } else el.style.display='none';
+    }
+    refreshCartCount();
+
+    document.getElementById("contactForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      window.location.href = "thankyou.html";
+    });
+  </script>
+</body>
+</html>
+
+

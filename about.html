@@ -1,15 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>About — UniBooks</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — Unity Books</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
     body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
       background: linear-gradient(135deg, #e3f2fd, #ffffff);
-      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #0b1220;
     }
+
+    /* Header (same as home) */
+    header {
+      background: linear-gradient(90deg, #0b2145, #0b74de);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo {
+      background: radial-gradient(circle at top left, #ffcc33, #0b74de);
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 15px rgba(11, 116, 222, 0.4);
+    }
+    nav {
+      display: flex;
+      gap: 18px;
+    }
+    nav a {
+      color: #ffffffcc;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: #fff;
+    }
+
+    /* Content */
     .about-section {
       max-width: 900px;
       margin: 60px auto;
@@ -57,38 +103,51 @@
       margin: 6px 0;
       font-size: 15px;
     }
+
+    .footer-small {
+      text-align: center;
+      margin: 40px 0;
+      color: #666;
+      font-size: 14px;
+    }
   </style>
 </head>
 <body>
-  <header class="header">
-    <div class="brand">
-      <div class="logo">UB</div>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="products.html">Books</a>
-        <a href="about.html">About</a>
-      </nav>
+ <header class="header">
+  <div class="brand">
+    <div class="logo">UB</div>
+    <div class="sitename">Unity Books</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html" class="active">About</a>
+      <a href="security.html">Security</a>
+      <a href="payment.html">Payment</a>
+      <a href="legal.html">Legal</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+  <div class="spacer"></div>
+  <div class="searchbar" role="search" aria-hidden="true">
+    <input placeholder="Search books, authors..." />
+    <div style="flex:1"></div>
+    <div class="search-actions">
+      <button class="icon-btn" onclick="location.href='cart.html'">
+        My basket <span id="cartCount" class="cart-count" style="display:none">0</span>
+      </button>
     </div>
-    <div class="spacer"></div>
-    <div class="searchbar" role="search">
-      <input placeholder="Search books, authors..." disabled style="opacity:0.6;cursor:not-allowed;">
-      <div style="flex:1"></div>
-      <div class="search-actions">
-        <button class="icon-btn" onclick="location.href='cart.html'">My basket 
-          <span id="cartCount" class="cart-count" style="display:none">0</span>
-        </button>
-      </div>
-    </div>
-  </header>
+  </div>
+</header>
+
 
   <div class="about-section">
-    <h2>About UniBooks</h2>
-    <p><strong>UniBooks</strong> is a modern online bookstore built specifically for university students. 
+    <h2>About Unity Books</h2>
+    <p><strong>Unity Books</strong> is a modern online bookstore built specifically for university students. 
       Our mission is to make academic and professional learning resources more accessible, affordable, and 
       convenient — anytime, anywhere.</p>
 
     <p>We understand that students balance demanding schedules and tight budgets. 
-      That’s why UniBooks provides a clean, reliable platform for browsing and purchasing 
+      That’s why Unity Books provides a clean, reliable platform for browsing and purchasing 
       academic books across various fields — from programming and AI to business and management.</p>
 
     <h3>Our Vision</h3>
@@ -103,34 +162,24 @@
       <li>Instant access to resources that encourage continuous learning.</li>
     </ul>
 
-    <h3>Why Choose UniBooks?</h3>
-    <p>UniBooks is built with students in mind. Our goal is to bring technology and education together, 
+    <h3>Why Choose Unity Books?</h3>
+    <p>Unity Books is built with students in mind. Our goal is to bring technology and education together, 
       making it easy to find the right book for your next lecture, project, or research paper.</p>
     <p>We believe that knowledge is power — and every great achievement begins with a book.</p>
 
     <p style="margin-top:30px; font-style:italic; color:#0b74de;">
-      “Read. Learn. Achieve — with UniBooks.”
+      “Read. Learn. Achieve — with Unity Books.”
     </p>
 
     <div class="developer-card">
       <h3>Meet the Developer</h3>
       <p><strong>Ahmed Salim Kato</strong></p>
       <p>Diploma in Information Technology</p>
-      <p>Developer & Designer of UniBooks</p>
+      <p>Developer & Designer of Unity Books</p>
       <p>Passionate about creating educational solutions through clean and modern web design.</p>
     </div>
   </div>
 
-  <div class="footer-small">© 2025 UniBooks — Empowering Students Through Knowledge</div>
-
-  <script>
-    function refreshCartCount(){
-      const c = JSON.parse(localStorage.getItem('cart')||'[]').length;
-      const el = document.getElementById('cartCount');
-      if(c>0){ el.style.display='inline-block'; el.textContent=c } else el.style.display='none';
-    }
-    refreshCartCount();
-  </script>
+  <div class="footer-small">© 2025 Unity Books — Empowering Students Through Knowledge</div>
 </body>
 </html>
-
