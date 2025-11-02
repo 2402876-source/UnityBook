@@ -256,3 +256,54 @@ button, .btn-small {
   color: #fff;
   font-size: 18px;
 }
+/* Dropdown Menu */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background: transparent;
+  border: none;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.dropbtn:hover {
+  background: linear-gradient(90deg, #0b74de, #ffcc00);
+  color: #0b1220;
+  box-shadow: 0 4px 12px rgba(11,116,222,0.3);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: white;
+  min-width: 150px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.dropdown-content a {
+  color: #0b1220;
+  padding: 10px 14px;
+  text-decoration: none;
+  display: block;
+  transition: background 0.25s ease;
+}
+
+.dropdown-content a:hover {
+  background: linear-gradient(90deg, #0b74de, #ffcc00);
+  color: white;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}

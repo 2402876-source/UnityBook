@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Security — Unity Books</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
   <style>
     body {
-      background: linear-gradient(135deg, #fdf6e3, #e3f2fd, #ffffff);
-      font-family: 'Segoe UI', Arial, sans-serif;
-      margin: 0;
+      background: linear-gradient(135deg, #e3f2fd, #fff9e6);
+      font-family: "Segoe UI", Arial, sans-serif;
       color: #0b1220;
+      margin: 0;
     }
-
     .content {
       max-width: 900px;
       margin: 60px auto;
@@ -22,37 +21,15 @@
       padding: 40px 50px;
       line-height: 1.7;
     }
-
-    h2 {
-      color: #0b74de;
-      margin-bottom: 16px;
-      font-size: 28px;
-      text-align: center;
-    }
-    h3 {
-      color: #0b1220;
-      margin-top: 28px;
-      font-size: 20px;
-    }
-    p, ul {
-      color: #333;
-    }
-    ul {
-      margin-left: 20px;
-    }
-
-    @media (max-width:700px){
-      .content {padding: 30px 20px;}
-    }
+    h2 { color: #0b74de; margin-bottom: 16px; font-size: 30px; }
+    h3 { color: #0b1220; margin-top: 30px; }
+    ul { margin-left: 20px; }
   </style>
 </head>
 <body>
-
-  <!-- Unified Header -->
   <header class="header">
     <div class="brand">
       <div class="logo">UB</div>
-      <div class="sitename">Unity Books</div>
       <nav>
         <a href="index.html">Home</a>
         <a href="shop.html">Shop</a>
@@ -63,53 +40,24 @@
         <a href="contact.html">Contact</a>
       </nav>
     </div>
-    <div class="spacer"></div>
-    <div class="searchbar" role="search" aria-hidden="true">
-      <input placeholder="Search books, authors..." />
-      <div style="flex:1"></div>
-      <div class="search-actions">
-        <button class="icon-btn" onclick="location.href='cart.html'">
-          My basket <span id="cartCount" class="cart-count" style="display:none">0</span>
-        </button>
-      </div>
-    </div>
   </header>
 
-  <!-- Page Content -->
   <div class="content">
-    <h2>Security at Unity Books</h2>
-    <p>At Unity Books, your data and privacy are always protected. We prioritize safety across all pages and transactions to ensure that your academic journey is worry-free.</p>
+    <h2>Website Security at Unity Books</h2>
+    <p>At Unity Books, the safety of our users and their data is our highest priority. While this demo site does not store personal data, our production-ready design follows secure web practices.</p>
 
-    <h3>🔒 Our Security Measures</h3>
+    <h3>Our Security Practices</h3>
     <ul>
-      <li>Encrypted data handling for all stored user interactions.</li>
-      <li>Secure HTTPS protection during live deployment.</li>
-      <li>Regular code maintenance to patch vulnerabilities quickly.</li>
-      <li>Minimal user data storage — only what’s essential for your shopping experience.</li>
+      <li><strong>SSL Encryption:</strong> Ensures all data transmitted between your browser and our server is encrypted and safe from interception.</li>
+      <li><strong>User Authentication:</strong> Secure login processes prevent unauthorized access to user accounts (future implementation).</li>
+      <li><strong>Data Protection:</strong> Personal details, once implemented, would be stored using secure, encrypted methods.</li>
+      <li><strong>Regular Updates:</strong> We consistently review code for vulnerabilities and apply necessary security patches.</li>
     </ul>
 
-    <h3>🧩 How You Can Stay Safe</h3>
-    <ul>
-      <li>Always access Unity Books from trusted networks and devices.</li>
-      <li>Keep your browser and system up to date.</li>
-      <li>Never share sensitive information through third-party links or unverified sources.</li>
-    </ul>
-
-    <p style="margin-top:20px;color:#0b74de;font-weight:600;text-align:center;">
-      “Your knowledge is priceless — your security matters just as much.”
-    </p>
+    <h3>Tips for Safe Browsing</h3>
+    <p>Always access Unity Books through the official site and avoid sharing personal details over public Wi-Fi.</p>
   </div>
 
-  <div class="footer-small">© 2025 Unity Books — Protecting Knowledge Securely</div>
-
-  <script>
-    function refreshCartCount(){
-      const c = JSON.parse(localStorage.getItem('cart')||'[]').length;
-      const el = document.getElementById('cartCount');
-      if(c>0){ el.style.display='inline-block'; el.textContent=c }
-      else { el.style.display='none'; }
-    }
-    refreshCartCount();
-  </script>
+  <footer class="footer-small">© 2025 Unity Books — Protecting Knowledge Securely</footer>
 </body>
 </html>
