@@ -1,61 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>About — Unity Books</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css"/>
   <style>
     body {
-      margin: 0;
-      font-family: "Segoe UI", Arial, sans-serif;
-      background: linear-gradient(135deg, #e3f2fd, #ffffff);
-      color: #0b1220;
+      background: linear-gradient(135deg, #e3f2fd, #fffbe6);
+      font-family: 'Segoe UI', Arial, sans-serif;
     }
-
-    /* Header (same as home) */
-    header {
-      background: linear-gradient(90deg, #0b2145, #0b74de);
-      padding: 12px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      color: white;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .logo {
-      background: radial-gradient(circle at top left, #ffcc33, #0b74de);
-      color: white;
-      font-weight: bold;
-      font-size: 18px;
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 15px rgba(11, 116, 222, 0.4);
-    }
-    nav {
-      display: flex;
-      gap: 18px;
-    }
-    nav a {
-      color: #ffffffcc;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-    nav a:hover {
-      color: #fff;
-    }
-
-    /* Content */
     .about-section {
       max-width: 900px;
       margin: 60px auto;
@@ -88,7 +42,7 @@
     .developer-card {
       margin-top: 50px;
       padding: 30px;
-      background: linear-gradient(135deg, #0b74de, #4aa6ff);
+      background: linear-gradient(135deg, #0b74de, #ffcc33);
       color: white;
       border-radius: 14px;
       box-shadow: 0 8px 20px rgba(11,116,222,0.25);
@@ -103,42 +57,23 @@
       margin: 6px 0;
       font-size: 15px;
     }
-
-    .footer-small {
-      text-align: center;
-      margin: 40px 0;
-      color: #666;
-      font-size: 14px;
-    }
   </style>
 </head>
 <body>
- <header class="header">
-  <div class="brand">
-    <div class="logo">UB</div>
-    <div class="sitename">Unity Books</div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="shop.html">Shop</a>
-      <a href="about.html" class="active">About</a>
-      <a href="security.html">Security</a>
-      <a href="payment.html">Payment</a>
-      <a href="legal.html">Legal</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </div>
-  <div class="spacer"></div>
-  <div class="searchbar" role="search" aria-hidden="true">
-    <input placeholder="Search books, authors..." />
-    <div style="flex:1"></div>
-    <div class="search-actions">
-      <button class="icon-btn" onclick="location.href='cart.html'">
-        My basket <span id="cartCount" class="cart-count" style="display:none">0</span>
-      </button>
+  <header class="header">
+    <div class="brand">
+      <div class="logo">UB</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html" class="active">About</a>
+        <a href="security.html">Security</a>
+        <a href="payment.html">Payment</a>
+        <a href="legal.html">Legal</a>
+        <a href="contact.html">Contact</a>
+      </nav>
     </div>
-  </div>
-</header>
-
+  </header>
 
   <div class="about-section">
     <h2>About Unity Books</h2>
@@ -154,6 +89,14 @@
     <p>To be the leading digital bookstore for students, transforming how educational resources 
       are accessed and shared globally.</p>
 
+    <h3>E-Commerce Model</h3>
+    <p>
+      Unity Books operates under a <strong>B2C (Business-to-Consumer)</strong> e-commerce model,
+      providing affordable and accessible academic books directly to university students through
+      an easy-to-use online platform. This approach ensures that learners can browse, select,
+      and purchase study materials conveniently without intermediaries.
+    </p>
+
     <h3>What We Offer</h3>
     <ul>
       <li>A curated collection of quality academic and professional books.</li>
@@ -161,18 +104,19 @@
       <li>Affordable pricing tailored for university learners.</li>
       <li>Instant access to resources that encourage continuous learning.</li>
     </ul>
-<h3>E-Commerce Model</h3>
-<p>
-  Unity Books operates under a <strong>B2C (Business-to-Consumer)</strong> e-commerce model,
-  providing affordable and accessible academic books directly to university students through
-  an easy-to-use online platform. This approach ensures that learners can browse, select,
-  and purchase study materials conveniently without intermediaries.
-</p>
 
-    <h3>Why Choose Unity Books?</h3>
-    <p>Unity Books is built with students in mind. Our goal is to bring technology and education together, 
-      making it easy to find the right book for your next lecture, project, or research paper.</p>
-    <p>We believe that knowledge is power — and every great achievement begins with a book.</p>
+    <h3>Recommendations for Improvement</h3>
+    <p>
+      While Unity Books currently functions as a frontend academic bookstore, several enhancements 
+      can make it more dynamic and user-friendly in the future:
+    </p>
+    <ul>
+      <li><strong>Backend Integration:</strong> Add a database system (e.g., Firebase or MySQL) to manage orders, user accounts, and inventory.</li>
+      <li><strong>Payment Gateway:</strong> Integrate real-time payment options such as <em>M-Pesa API</em> or <em>PayPal Sandbox</em> for secure transactions.</li>
+      <li><strong>Visual Consistency:</strong> Refine the interface with a uniform color palette and higher-quality book images.</li>
+      <li><strong>Smart Search & Filters:</strong> Implement a live search and category-based filtering system for smoother navigation.</li>
+      <li><strong>User Feedback System:</strong> Allow users to leave ratings or reviews to improve product credibility and engagement.</li>
+    </ul>
 
     <p style="margin-top:30px; font-style:italic; color:#0b74de;">
       “Read. Learn. Achieve — with Unity Books.”
@@ -187,6 +131,7 @@
     </div>
   </div>
 
+ </script>
 <footer style="text-align:center; padding:25px 10px; margin-top:40px;
   background:linear-gradient(90deg,#0b74de,#ffcc00);
   color:#fff; font-size:14px; font-weight:500; letter-spacing:0.3px;
@@ -214,3 +159,4 @@
 </style>
 </body>
 </html>
+

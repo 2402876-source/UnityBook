@@ -1,43 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Security & Policy — Unity Books</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
   <style>
     body {
-      background: linear-gradient(135deg, #fefcf3, #eaf2fb, #ffffff);
       font-family: "Segoe UI", Arial, sans-serif;
-      margin: 0;
+      background: linear-gradient(135deg, #fdf6e3, #e3f2fd, #ffffff);
       color: #0b1220;
+      margin: 0;
     }
 
     .policy-container {
       max-width: 950px;
       margin: 60px auto;
-      background: rgba(255, 255, 255, 0.97);
+      background: rgba(255, 255, 255, 0.96);
       border-radius: 18px;
       box-shadow: 0 10px 40px rgba(11, 116, 222, 0.15);
       padding: 50px;
-      line-height: 1.7;
     }
 
     h2 {
-      text-align: center;
       color: #0b74de;
-      margin-bottom: 20px;
       font-size: 32px;
+      text-align: center;
+      margin-bottom: 30px;
     }
 
     h3 {
       color: #0b1220;
-      margin-top: 30px;
+      margin-top: 28px;
       font-size: 22px;
     }
 
-    p, li {
+    p, ul {
       color: #333;
+      line-height: 1.7;
       font-size: 15px;
     }
 
@@ -45,16 +45,22 @@
       margin-left: 20px;
     }
 
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #555;
+      font-size: 14px;
+    }
+
     .highlight {
       color: #0b74de;
       font-weight: 600;
     }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: #555;
-      font-size: 14px;
+    @media (max-width: 700px) {
+      .policy-container {
+        padding: 30px 20px;
+      }
     }
   </style>
 </head>
@@ -67,43 +73,63 @@
         <a href="index.html">Home</a>
         <a href="shop.html">Shop</a>
         <a href="about.html">About</a>
+        <a href="security.html">Security</a>
+        <a href="payment.html">Payment</a>
+        <a href="legal.html">Legal</a>
         <a href="contact.html">Contact</a>
-        <a href="security-policy.html" class="active">Security & Policy</a>
       </nav>
     </div>
   </header>
 
   <div class="policy-container">
-    <h2>Security & Policy</h2>
-    <p>At <strong>Unity Books</strong>, your trust and data security are our top priorities. Below is a brief overview of our protection, payment, and privacy policies.</p>
+    <h2>Security & Policy Information</h2>
 
-    <h3>🔒 Security</h3>
+    <h3>🔒 Data Security & SSL Encryption</h3>
+    <p>
+      Unity Books uses <span class="highlight">SSL (Secure Socket Layer)</span> encryption to protect 
+      sensitive data during transmission. This ensures all interactions between users and the platform 
+      remain private and secure from unauthorized access.
+    </p>
+
+    <h3>👤 User Authentication & Protection</h3>
+    <p>
+      User data is stored securely, and future versions will include secure login authentication. 
+      Passwords and personal details will be encrypted to prevent breaches.
+    </p>
+
+    <h3>💳 Accepted Payment Options</h3>
     <ul>
-      <li>All transactions are protected using <span class="highlight">SSL encryption</span> to ensure your data remains private and secure.</li>
-      <li>User authentication is applied for safe account access and order tracking.</li>
-      <li>We use secure cloud storage to protect all user records and purchase data.</li>
+      <li><strong>M-Pesa:</strong> Secure mobile payment integration for local users.</li>
+      <li><strong>PayPal:</strong> For international and verified online transactions.</li>
+      <li><strong>Credit/Debit Cards:</strong> Encrypted payments processed through trusted gateways.</li>
     </ul>
 
-    <h3>💳 Accepted Payments</h3>
-    <ul>
-      <li><strong>M-Pesa:</strong> Quick and convenient for local transactions.</li>
-      <li><strong>PayPal:</strong> For international customers and verified payments.</li>
-      <li><strong>Debit/Credit Cards:</strong> Processed securely via trusted gateways.</li>
-    </ul>
-
-    <h3>📜 Privacy Policy</h3>
-    <p>We only collect the minimum information necessary to process your order. Your personal data is never sold or shared with third parties. All records are stored securely and used solely for delivery or customer support.</p>
+    <h3>🔐 Privacy Policy</h3>
+    <p>
+      Unity Books values your privacy. Personal information is only used for processing orders 
+      and improving user experience. We do not share, sell, or distribute your data to third parties.
+    </p>
 
     <h3>💰 Refund Policy</h3>
-    <p>Customers can request a refund within <strong>7 days</strong> of purchase if they receive the wrong book or experience a payment issue. Refunds are processed promptly once eligibility is verified.</p>
+    <p>
+      Customers may request a refund within <strong>7 days</strong> of purchase for any incorrect or 
+      duplicate orders. Refund requests are processed securely through the original payment method.
+    </p>
 
-    <h3>⚖️ Legal Disclaimer</h3>
-    <p>Unity Books operates under applicable data protection and e-commerce laws of Kenya. Continued use of our site implies agreement to these terms and conditions.</p>
+    <h3>⚖️ Legal & Ethical Responsibility</h3>
+    <p>
+      Unity Books complies with standard e-commerce ethics by ensuring transparency, data security, 
+      and fair customer treatment. Users are encouraged to read our <a href="legal.html" style="color:#0b74de;">Legal page</a> 
+      for more details on terms of use.
+    </p>
 
-    <p style="margin-top:20px; text-align:center; color:#0b74de; font-style:italic;">“Your safety, your knowledge — our commitment.”</p>
+    <p style="margin-top:30px; font-style:italic; color:#0b74de; text-align:center;">
+      “Your security and trust are at the heart of Unity Books.”
+    </p>
   </div>
 
-  <footer style="text-align:center; padding:25px 10px; margin-top:40px;
+ </script>
+<footer style="text-align:center; padding:25px 10px; margin-top:40px;
   background:linear-gradient(90deg,#0b74de,#ffcc00);
   color:#fff; font-size:14px; font-weight:500; letter-spacing:0.3px;
   border-top-left-radius:14px; border-top-right-radius:14px;
@@ -114,7 +140,6 @@
     <a href="security-policy.html"
        style="color:#fff; text-decoration:none; font-weight:600;
               transition:all 0.3s ease;">
-      🔒 Security & Policy
     </a>
   </p>
 </footer>
@@ -128,6 +153,6 @@
     to {opacity:1; transform:translateY(0);}
   }
 </style>
-
 </body>
 </html>
+
