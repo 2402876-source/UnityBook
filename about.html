@@ -117,6 +117,23 @@
       <p>Passionate about creating educational solutions through clean and modern web design.</p>
     </div>
   </div>
+<h3>Rate Your Experience</h3>
+<select id="rating">
+  <option value="5">⭐⭐⭐⭐⭐</option>
+  <option value="4">⭐⭐⭐⭐</option>
+  <option value="3">⭐⭐⭐</option>
+  <option value="2">⭐⭐</option>
+  <option value="1">⭐</option>
+</select>
+<textarea id="comment" placeholder="Your feedback..."></textarea>
+<button onclick="submitFeedback()">Submit</button>
+<script>
+function submitFeedback(){
+  const rate = document.getElementById('rating').value;
+  const msg = document.getElementById('comment').value;
+  alert("Thanks for your feedback!\nRating: "+rate+" Stars\nMessage: "+msg);
+}
+</script>
 
  </script>
 <footer style="text-align:center; padding:25px 10px; margin-top:40px;
